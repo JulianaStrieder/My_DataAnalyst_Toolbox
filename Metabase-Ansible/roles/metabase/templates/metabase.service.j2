@@ -1,0 +1,21 @@
+[Unit]
+Description=Metabase server
+After=syslog.target
+After=network.target
+   
+[Service]
+WorkingDirectory=/home/metabase
+ExecStart=/usr/bin/java -jar metabase.jar
+EnvironmentFile=/etc/default/metabase
+User=metabase
+Group=metabase
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=metabase
+SuccessExitStatus=143
+TimeoutStopSec=120
+Restart=on-failure
+   
+[Install]
+WantedBy=multi-user.target

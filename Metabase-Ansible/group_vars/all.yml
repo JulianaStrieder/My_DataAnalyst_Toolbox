@@ -1,0 +1,19 @@
+---
+nginx:
+  ip_myhost: PASTE_YOUR_IP_HERE
+  
+metabase:
+  metabase_version: v0.34.3
+  db_type: mysql
+  db_dbname: YOUR_DB_NAME
+  db_port: 3306
+  db_user: YOUR_USER
+  db_password: YOUR_PASSWORD
+  db_host: YOUR_HOST_ENDPOINT
+  
+
+
+
+
+
+  

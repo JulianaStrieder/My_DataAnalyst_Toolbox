@@ -1,0 +1,23 @@
+---
+- name: Restart syslog
+  systemd:
+    state: restarted
+    name: rsyslog
+  become: yes
+
+- name: Reload daemon
+  systemd:
+    daemon_reexec: yes
+  become: yes
+
+- name: Start metabase
+  service:
+    name: metabase.service
+    state: started
+  become: yes
+
+- name: Enable Metabase Service
+  service: 
+    name: metabase.service
+    enabled: yes
+  become: yes

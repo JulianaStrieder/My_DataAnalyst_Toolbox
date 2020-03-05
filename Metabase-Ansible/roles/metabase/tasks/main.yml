@@ -1,0 +1,77 @@
+---
+
+- name: Create an unprivileged user to run Metabase 1
+  group:
+    name: metabase
+    state: present
+  become: yes
+
+- name: Create an unprivileged user to run Metabase 2
+  user:
+    name: metabase
+    state: present
+  become: yes
+
+- name: Add the user metabase with a bash shell
+  user:
+    name: metabase
+    shell: /bin/bash
+    groups: metabase
+    append: yes
+  become: yes
+
+- name: Create and set ownership of a directory
+  file:
+    path: /home/metabase
+    state: directory
+    owner: metabase
+    group: metabase
+    mode: '0755'
+  become: yes
+
+- name: Download Metabase
+  get_url: 
+    url: http://downloads.metabase.com/{{ metabase.metabase_version }}/metabase.jar
+    dest: /home/metabase
+    owner: metabase
+    mode: '0755'
+  become: yes
+
+- name: Touch the same file,and add some permissions
+  file:
+    path: /var/log/metabase.log
+    state: touch
+    owner: metabase
+    group: metabase
+    mode: '0600'
+  become: yes
+
+- name: Create a Metabase service file
+  template: 
+    src: templates/metabase.service.j2 
+    dest: /etc/systemd/system/metabase.service
+    owner: metabase
+    mode: '0600'
+  become: yes
+
+- name: Create syslog conf
+  template: 
+    src: templates/metabase.conf.j2 
+    dest: /etc/rsyslog.d/metabase.conf
+    owner: metabase
+    mode: '0600'
+  become: yes
+  notify: Restart syslog
+
+- name: Environment variables for Metabase
+  template: 
+    src: templates/metabase.j2 
+    dest: /etc/default/metabase
+    owner: metabase
+    mode: '0600'
+  become: yes
+  notify: 
+    - Reload daemon
+    - Start metabase
+    - Enable Metabase Service
+
