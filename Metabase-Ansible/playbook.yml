@@ -1,0 +1,14 @@
+---
+- name: Install and configure Metabase as a service in Ubuntu server
+  hosts: all
+  become: true
+
+  roles:
+    - role: pre-reqs
+    - role: nginx
+    - role: metabase
+    
+    
+    
+  
+  

@@ -1,0 +1,9 @@
+---
+
+- name: Install Java
+  apt:
+    name: openjdk-11-jre-headless
+    state: latest
+    install_recommends: no
+    update_cache: yes
+    
