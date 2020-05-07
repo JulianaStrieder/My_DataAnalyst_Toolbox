@@ -12,7 +12,7 @@ I gathered some command line to work on Linux that I ended up using every day as
 
 3. Move a file:
 
-    `mv SOURCE_DIRECTORY_PATH/FILE_TO_BE_REMOVED DIRECTORY_WHERE_YOU_WANT_TO_MOVE_THE_FILE/
+    `mv SOURCE_DIRECTORY_PATH/FILE_TO_BE_REMOVED DIRECTORY_WHERE_YOU_WANT_TO_MOVE_THE_FILE/`
 
     If you already are in the directory where the file is, then:
 
@@ -34,7 +34,7 @@ I gathered some command line to work on Linux that I ended up using every day as
 
     `ls`
 
-    Sometimes you also need to se hidden files and directories:
+    Sometimes you also need to see hidden files and directories:
 
     `ls -la`
 
