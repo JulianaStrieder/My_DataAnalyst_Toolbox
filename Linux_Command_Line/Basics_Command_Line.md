@@ -44,7 +44,7 @@ I gathered some command line to work on Linux that I ended up using every day as
 
 9. To move a file:
 
-    `mv myfile.txt movefilehere`
+    `mv myfile.txt movefilehere/`
 
 10. To unzip: 
 
