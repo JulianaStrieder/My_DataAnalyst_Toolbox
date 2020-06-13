@@ -49,3 +49,9 @@ I gathered some command line to work on Linux that I ended up using every day as
 10. To unzip: 
 
     `tar -xzf itiscompacted.tar.gz`
+
+11. To get a compacted and compressed file from a directory with files and subdirectories inside it:
+
+    `tar -vczf here_is_zip_file_name.tar.gz /here_you_specify_directory_to_be_compressed`
+
+    > -vczf means: v from verbose, c for create a file), z for compress with gzip, and f for file (create a compacted file).
